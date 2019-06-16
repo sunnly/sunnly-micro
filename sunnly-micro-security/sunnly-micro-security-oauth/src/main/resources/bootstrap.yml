@@ -1,0 +1,47 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      config:
+        server-addr: nacos.sunnly.wang:8848
+#        file-extension: yml
+#        name: ${spring.application.name}
+#        active-profiles: ${spring.application.name}-config
+        group: SUNNLY-MICRO
+        ext-config[0]:
+          data-id: ${spring.application.name}-${spring.profiles.active}.yml
+          group: ${spring.cloud.nacos.config.group}
+        ext-config[1]:
+          data-id: ${spring.application.name}-config-${spring.profiles.active}.yml
+          group: ${spring.cloud.nacos.config.group}
+        ext-config[2]:
+          data-id: ${spring.application.name}-mysql-${spring.profiles.active}.yml
+          group: ${spring.cloud.nacos.config.group}
+        ext-config[3]:
+          data-id: ${spring.application.name}-redis-${spring.profiles.active}.yml
+          group: ${spring.cloud.nacos.config.group}
+      discovery:
+        server-addr: nacos.sunnly.wang:8848
+  application:
+    name: sunnly-micro-security-oauth
+  profiles:
+    active: dev
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+feign:
+  sentinel:
+    enabled: true
+
+
+sunnly:
+  security:
+    auth:
+      client:
+        expire: 3600
+
+

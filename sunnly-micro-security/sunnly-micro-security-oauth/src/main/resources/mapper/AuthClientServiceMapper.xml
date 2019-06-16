@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wang.sunnly.microservice.nacos.security.oauth.mapper.AuthClientServiceMapper">
+  <resultMap id="BaseResultMap" type="wang.sunnly.micro.security.oauth.entity.AuthClientService">
+    <!--@mbg.generated generated on Thu Jun 13 23:13:39 CST 2019.-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="client_id" jdbcType="VARCHAR" property="clientId" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="crt_time" jdbcType="TIMESTAMP" property="crtTime" />
+    <result column="crt_user" jdbcType="VARCHAR" property="crtUser" />
+    <result column="crt_name" jdbcType="VARCHAR" property="crtName" />
+    <result column="crt_host" jdbcType="VARCHAR" property="crtHost" />
+    <result column="attr1" jdbcType="VARCHAR" property="attr1" />
+    <result column="attr2" jdbcType="VARCHAR" property="attr2" />
+    <result column="attr3" jdbcType="VARCHAR" property="attr3" />
+    <result column="attr4" jdbcType="VARCHAR" property="attr4" />
+    <result column="attr5" jdbcType="VARCHAR" property="attr5" />
+    <result column="attr6" jdbcType="VARCHAR" property="attr6" />
+    <result column="attr7" jdbcType="VARCHAR" property="attr7" />
+    <result column="attr8" jdbcType="VARCHAR" property="attr8" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated generated on Thu Jun 13 23:13:39 CST 2019.-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated generated on Thu Jun 13 23:13:39 CST 2019.-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Thu Jun 13 23:13:39 CST 2019.-->
+    id, service_id, client_id, description, crt_time, crt_user, crt_name, crt_host, attr1, 
+    attr2, attr3, attr4, attr5, attr6, attr7, attr8
+  </sql>
+  <select id="selectByExample" parameterType="wang.sunnly.micro.security.oauth.entity.AuthClientServiceExample" resultMap="BaseResultMap">
+    <!--@mbg.generated generated on Thu Jun 13 23:13:39 CST 2019.-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from auth_client_service
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="wang.sunnly.micro.security.oauth.entity.AuthClientServiceExample">
+    <!--@mbg.generated generated on Thu Jun 13 23:13:39 CST 2019.-->
+    delete from auth_client_service
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="wang.sunnly.micro.security.oauth.entity.AuthClientServiceExample" resultType="java.lang.Long">
+    <!--@mbg.generated generated on Thu Jun 13 23:13:39 CST 2019.-->
+    select count(*) from auth_client_service
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated generated on Thu Jun 13 23:13:39 CST 2019.-->
+    update auth_client_service
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clientId != null">
+        client_id = #{record.clientId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.crtTime != null">
+        crt_time = #{record.crtTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.crtUser != null">
+        crt_user = #{record.crtUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.crtName != null">
+        crt_name = #{record.crtName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.crtHost != null">
+        crt_host = #{record.crtHost,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr1 != null">
+        attr1 = #{record.attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr2 != null">
+        attr2 = #{record.attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr3 != null">
+        attr3 = #{record.attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr4 != null">
+        attr4 = #{record.attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr5 != null">
+        attr5 = #{record.attr5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr6 != null">
+        attr6 = #{record.attr6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr7 != null">
+        attr7 = #{record.attr7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr8 != null">
+        attr8 = #{record.attr8,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated generated on Thu Jun 13 23:13:39 CST 2019.-->
+    update auth_client_service
+    set id = #{record.id,jdbcType=INTEGER},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      client_id = #{record.clientId,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      crt_time = #{record.crtTime,jdbcType=TIMESTAMP},
+      crt_user = #{record.crtUser,jdbcType=VARCHAR},
+      crt_name = #{record.crtName,jdbcType=VARCHAR},
+      crt_host = #{record.crtHost,jdbcType=VARCHAR},
+      attr1 = #{record.attr1,jdbcType=VARCHAR},
+      attr2 = #{record.attr2,jdbcType=VARCHAR},
+      attr3 = #{record.attr3,jdbcType=VARCHAR},
+      attr4 = #{record.attr4,jdbcType=VARCHAR},
+      attr5 = #{record.attr5,jdbcType=VARCHAR},
+      attr6 = #{record.attr6,jdbcType=VARCHAR},
+      attr7 = #{record.attr7,jdbcType=VARCHAR},
+      attr8 = #{record.attr8,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

@@ -1,0 +1,36 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      config:
+        server-addr: nacos.sunnly.wang:8848
+        group: SUNNLY-MICRO-TEST
+        ext-config[0]:
+          data-id: ${spring.application.name}-${spring.profiles.active}.yml
+          group: ${spring.cloud.nacos.config.group}
+        ext-config[1]:
+          data-id: ${spring.application.name}-mysql-${spring.profiles.active}.yml
+          group: ${spring.cloud.nacos.config.group}
+      discovery:
+        server-addr: nacos.sunnly.wang:8848
+  application:
+    name: sunnly-micro-module-test-producer
+  profiles:
+    active: dev
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+sunnly:
+  security:
+    auth:
+      service-id: sunnly-micro-security-oauth
+      client:
+        id: id
+        secret: client
+        token-header: x-client-token
+      user:
+        token-header: Authorization
+
+

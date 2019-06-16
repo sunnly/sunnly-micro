@@ -1,0 +1,17 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      config:
+        server-addr: nacos.sunnly.wang:8848
+        group: SUNNLY-MICRO-TEST
+        name: ${spring.application.name}
+        file-extension: yml
+      discovery:
+        server-addr: nacos.sunnly.wang:8848
+  application:
+    name: sunnly-micro-module-test-consumer
+  profiles:
+    active: dev
+

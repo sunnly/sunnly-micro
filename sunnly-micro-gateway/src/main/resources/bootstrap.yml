@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: nacos.sunnly.wang:8848
+        file-extension: yml
+        name: ${spring.application.name}
+        active-profiles: ${spring.profiles.active}
+        group: SUNNLY-MICRO
+      discovery:
+        server-addr: nacos.sunnly.wang:8848
+  application:
+    name: sunnly-micro-gateway
+  profiles:
+    active: dev
