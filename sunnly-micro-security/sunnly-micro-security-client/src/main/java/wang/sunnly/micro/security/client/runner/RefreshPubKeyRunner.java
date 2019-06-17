@@ -1,6 +1,5 @@
 package wang.sunnly.micro.security.client.runner;
 
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import wang.sunnly.micro.common.web.msg.ObjectRestResponse;
 import wang.sunnly.micro.security.client.properties.SecurityProperties;
 import wang.sunnly.micro.security.client.service.SecurityAuthClientFeign;
-import wang.sunnly.micro.security.client.service.TestFeign;
 
 /**
  * @author Sunnly
@@ -29,13 +27,15 @@ public class RefreshPubKeyRunner implements CommandLineRunner {
     private SecurityAuthClientFeign securityAuthClientFeign;
 
     @Autowired
-    private TestFeign testFeign;
-
-    @Autowired
     private SecurityProperties securityProperties;
 
     @Override
     public void run(String... args) throws Exception {
+
+//        System.out.println("===========================================================");
+//        System.out.println(securityAuthClientFeign.getAccessToken("ace-gate","123456").getData());
+//        System.out.println("===========================================================");
+
         log.info("初始化用户PubKey");
         getUserPublicKey();
         log.info("初始化服务pubKey");
@@ -88,30 +88,23 @@ public class RefreshPubKeyRunner implements CommandLineRunner {
     }
 
     private void getUserPublicKey(){
-        try {
-//            testFeign.getAllowClient("ace-admin","123456");
-            String userById = testFeign.getUserById("37");
-            System.out.println(userById);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-//        ObjectRestResponse<byte[]> userPubKey = securityAuthClientFeign.getUserPubKey(
-//                securityProperties.getAuth().getClient().getId(),
-//                securityProperties.getAuth().getClient().getSecret());
-//        if (userPubKey.getStatus() == HttpStatus.OK.value()){
-//            securityProperties.getAuth().getClient().setPubKeyByte(userPubKey.getData());
-//        }
+        ObjectRestResponse<byte[]> userPubKey = securityAuthClientFeign.getUserPubKey(
+                securityProperties.getAuth().getClient().getId(),
+                securityProperties.getAuth().getClient().getSecret());
+        if (userPubKey.getStatus() == HttpStatus.OK.value()){
+            securityProperties.getAuth().getUser().setPubKeyByte(userPubKey.getData());
+        }
 
     }
 
     private void getServicePublicKey(){
-//        ObjectRestResponse<byte[]> servicePubKey = securityAuthClientFeign.getServicePubKey(
-//                securityProperties.getAuth().getClient().getId(),
-//                securityProperties.getAuth().getClient().getSecret());
-//        if (servicePubKey.getStatus() == HttpStatus.OK.value()){
-//            securityProperties.getAuth().getClient().setPubKeyByte(servicePubKey.getData());
-//        }
+        ObjectRestResponse<byte[]> servicePubKey = securityAuthClientFeign.getServicePubKey(
+                securityProperties.getAuth().getClient().getId(),
+                securityProperties.getAuth().getClient().getSecret());
+        if (servicePubKey.getStatus() == HttpStatus.OK.value()){
+            securityProperties.getAuth().getClient().setPubKeyByte(servicePubKey.getData());
+        }
     }
 
 }

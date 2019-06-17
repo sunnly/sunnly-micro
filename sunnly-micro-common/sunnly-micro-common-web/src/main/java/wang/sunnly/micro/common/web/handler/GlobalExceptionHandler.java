@@ -27,4 +27,11 @@ public class GlobalExceptionHandler {
         response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         return new BaseResponse(ex.getStatus(), ex.getMessage());
     }
+
+    @ExceptionHandler(Exception.class)
+    public BaseResponse oExceptionHandler(HttpServletResponse response, BaseException ex) {
+        logger.error(ex.getMessage(),ex);
+        response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        return new BaseResponse(ex.getStatus(), ex.getMessage());
+    }
 }

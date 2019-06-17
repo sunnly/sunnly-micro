@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: nacos.sunnly.wang:8848
+        group: SUNNLY-MICRO
+        ext-config[0]:
+          data-id: ${spring.application.name}-${spring.profiles.active}.yml
+          group: ${spring.cloud.nacos.config.group}
+        ext-config[1]:
+          data-id: ${spring.application.name}-mysql-${spring.profiles.active}.yml
+          group: ${spring.cloud.nacos.config.group}
+      discovery:
+        server-addr: nacos.sunnly.wang:8848
+  application:
+    name: sunnly-micro-module-demo-producer
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
+
+

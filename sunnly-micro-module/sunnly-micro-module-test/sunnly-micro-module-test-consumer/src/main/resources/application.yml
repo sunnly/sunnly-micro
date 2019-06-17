@@ -1,0 +1,11 @@
+server:
+  port: ${random.int[10100,10101]}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+feign:
+  sentinel:
+    enabled: true

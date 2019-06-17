@@ -6,6 +6,8 @@ import wang.sunnly.micro.security.client.service.SecurityAuthClientFeign;
 import wang.sunnly.micro.security.core.exception.SecurityTokenException;
 import wang.sunnly.micro.security.core.status.SecurityStatus;
 
+import java.util.List;
+
 /**
  * @author Sunnly
  * @ClassName SecurityAuthServiceFeignFallback
@@ -14,22 +16,22 @@ import wang.sunnly.micro.security.core.status.SecurityStatus;
 @Component
 public class SecurityAuthClientFeignFallback implements SecurityAuthClientFeign {
     @Override
-    public ObjectRestResponse getAccessToken(String clientId, String secret) {
+    public ObjectRestResponse<String> getAccessToken(String clientId, String secret) {
         throw new SecurityTokenException(SecurityStatus.NETWORK_CONNECTION_ERR);
     }
 
     @Override
-    public ObjectRestResponse getAllowClient(String clientId, String secret) {
+    public ObjectRestResponse<List<String>> getAllowClient(String clientId, String secret) {
         throw new SecurityTokenException(SecurityStatus.NETWORK_CONNECTION_ERR);
     }
 
     @Override
-    public ObjectRestResponse getServicePubKey(String clientId, String secret) {
+    public ObjectRestResponse<byte[]> getServicePubKey(String clientId, String secret) {
         throw new SecurityTokenException(SecurityStatus.NETWORK_CONNECTION_ERR);
     }
 
     @Override
-    public ObjectRestResponse getUserPubKey(String clientId, String secret) {
+    public ObjectRestResponse<byte[]> getUserPubKey(String clientId, String secret) {
         throw new SecurityTokenException(SecurityStatus.NETWORK_CONNECTION_ERR);
     }
 

@@ -1,10 +1,7 @@
 package wang.sunnly.micro.security.oauth.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import wang.sunnly.micro.common.web.msg.ObjectRestResponse;
 import wang.sunnly.micro.security.oauth.properties.SshKeyProperties;
 import wang.sunnly.micro.security.oauth.service.AuthClientServices;
@@ -33,7 +30,7 @@ public class AuthClientController {
      * @return
      */
     @PostMapping("/token")
-    public ObjectRestResponse<String> getAccessToken(String clientId, String secret) throws Exception {
+    public ObjectRestResponse<String> getAccessToken(@RequestParam("clientId") String clientId,@RequestParam("secret")  String secret) throws Exception {
         return new ObjectRestResponse<String>().data(authClientServices.generateToken(clientId,secret));
     }
 
@@ -44,7 +41,7 @@ public class AuthClientController {
      * @return
      */
     @GetMapping("/myClient")
-    public ObjectRestResponse getAllowClient(String clientId, String secret) throws Exception {
+    public ObjectRestResponse<List<String>> getAllowClient(@RequestParam("clientId") String clientId,@RequestParam("secret")  String secret) throws Exception {
         List<String> allowClient = authClientServices.getAllowClient(clientId, secret);
 //        ObjectRestResponse<String> a = getToken(clientId, secret);
         return new ObjectRestResponse<List<String>>().data(allowClient);
@@ -58,7 +55,7 @@ public class AuthClientController {
      * @return
      */
     @PostMapping("/servicePubKey")
-    public ObjectRestResponse getServicePubKey(String clientId, String secret){
+    public ObjectRestResponse<byte[]> getServicePubKey(@RequestParam("clientId") String clientId,@RequestParam("secret")  String secret){
         //验证clientId和secret的有效性
         authClientServices.validate(clientId,secret);
         return new ObjectRestResponse<byte[]>().data(sshKeyProperties.getServicePubKey());
@@ -71,14 +68,14 @@ public class AuthClientController {
      * @return
      */
     @PostMapping("/userPubKey")
-    public ObjectRestResponse getUserPubKey(String clientId, String secret){
+    public ObjectRestResponse<byte[]> getUserPubKey(@RequestParam("clientId") String clientId,@RequestParam("secret")  String secret){
         //验证clientId和secret的有效性
         authClientServices.validate(clientId,secret);
         return new ObjectRestResponse<byte[]>().data(sshKeyProperties.getUserPubKey());
     }
 
     @GetMapping("/validate")
-    public boolean validateClientIdAndSecret(String clientId, String secret){
+    public boolean validateClientIdAndSecret(@RequestParam("clientId") String clientId,@RequestParam("secret")  String secret){
         try {
             authClientServices.validate(clientId,secret);
             return true;

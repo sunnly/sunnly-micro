@@ -24,6 +24,6 @@
     <modules>
         <module>sunnly-micro-module-admin</module>
         <module>sunnly-micro-module-monitor</module>
-        <module>sunnly-micro-module-test</module>
+        <module>sunnly-micro-module-demo</module>
     </modules>
 </project>

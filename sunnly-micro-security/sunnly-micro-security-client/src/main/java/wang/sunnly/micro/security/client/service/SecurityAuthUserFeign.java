@@ -8,7 +8,7 @@ import wang.sunnly.micro.security.client.service.impl.SecurityAuthUserFeignFallb
  * @ClassName SecutiryAuthUserService
  * @Date 2019/6/16 0016 23:31
  **/
-@FeignClient(value = "${sunnly.security.auth.service-id}", fallback = SecurityAuthUserFeignFallback.class)
+//@FeignClient(value = "${sunnly.security.auth.service-id}", fallback = SecurityAuthUserFeignFallback.class)
 public interface SecurityAuthUserFeign {
 
 }

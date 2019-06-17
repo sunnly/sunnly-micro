@@ -7,7 +7,6 @@
     </parent>
     <artifactId>sunnly-micro-module-test-producer</artifactId>
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -24,8 +23,24 @@
             <artifactId>sunnly-micro-tools-mysql</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
         <dependency>
+            <groupId>wang.sunnly.micro</groupId>
+            <artifactId>sunnly-micro-tools-nacos</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>wang.sunnly.micro</groupId>
+            <artifactId>sunnly-micro-tools-mysql</artifactId>
+            <version>${project.version}</version>
+        </dependency>-->
+
+        <!--<dependency>
             <groupId>wang.sunnly.micro</groupId>
             <artifactId>sunnly-micro-security-core</artifactId>
             <version>1.0.0-SNAPSHOT</version>
@@ -35,13 +50,13 @@
             <artifactId>sunnly-micro-common-web</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
-
+-->
         <!--加入鉴权-->
-        <dependency>
+        <!--<dependency>
             <groupId>wang.sunnly.micro</groupId>
             <artifactId>sunnly-micro-security-client</artifactId>
             <version>1.0.0-SNAPSHOT</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
     <build>
         <plugins>

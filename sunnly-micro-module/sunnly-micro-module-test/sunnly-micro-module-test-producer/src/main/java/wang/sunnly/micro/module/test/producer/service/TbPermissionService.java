@@ -10,5 +10,4 @@ import java.util.List;
 
 public interface TbPermissionService<M extends MyMapper<E>,E> extends BaseService<M,E> {
 
-    List<TbPermission> myList(int pageNo, int pageSize);
 }

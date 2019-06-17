@@ -17,5 +17,6 @@
     <modules>
         <module>sunnly-micro-module-test-producer</module>
         <module>sunnly-micro-module-test-consumer</module>
+        <module>sunnly-micro-module-test-oauth</module>
     </modules>
 </project>

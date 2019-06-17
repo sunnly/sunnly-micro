@@ -1,12 +1,10 @@
 package wang.sunnly.micro.module.test.producer.entity;
 
-import wang.sunnly.micro.common.web.entity.MyExample;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class TbPermissionExample extends MyExample {
+public class TbPermissionExample {
     protected String orderByClause;
 
     protected boolean distinct;

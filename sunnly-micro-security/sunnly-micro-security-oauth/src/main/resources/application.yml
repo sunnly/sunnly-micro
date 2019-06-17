@@ -1,0 +1,35 @@
+server:
+  port: ${random.int[5100,5101]}
+
+
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql.sunnly.wang:3306/ag_auth_v1?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: sunnly
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 600000
+      maximum-pool-size: 10
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+
+  redis:
+    database: 3
+    host: ${REDIS_HOST:redis.sunnly.wang}
+    port: ${REDIS_PORT:6379}
+    pool:
+    max-active: 20
+
+sunnly:
+  security:
+    auth:
+      client:
+        expire: 3600
