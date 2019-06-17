@@ -10,7 +10,7 @@ import wang.sunnly.micro.module.demo.producer.service.impl.DemoTestFeignFallback
  * @ClassName TestFeign
  * @Date 2019/6/17 0017 0:01
  **/
-@FeignClient(value = "sunnly-micro-security-oauth1", fallback = DemoTestFeignFallback.class)
+@FeignClient(value = "sunnly-micro-security-oauth", fallback = DemoTestFeignFallback.class)
 public interface DemoTestFeign {
     @PostMapping("/client/servicePubKey")
     public ObjectRestResponse getServicePubKey(@RequestParam("clientId") String clientId, @RequestParam("secret")  String secret);

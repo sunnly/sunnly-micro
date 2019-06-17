@@ -10,7 +10,7 @@ public enum SecurityStatus {
 
     //服务鉴权异常
     //配置类5030X
-    TOKEN_HEADER_NOT_CONFIG(50001,"Please configure: sunnly.security.auth.client.token-header"),
+    CLIENT_TOKEN_HEADER_NOT_CONFIG(50001,"Please configure: sunnly.security.auth.client.token-header"),
     //Token验证失败 5031X
     TOKEN_EMPTY(50310,"Client token is null or empty!"),
     TOKEN_EXPIRED(50311,"Client token expired!"),
@@ -22,7 +22,11 @@ public enum SecurityStatus {
     NETWORK_CONNECTION_ERR(50330,"网络连接错误"),
     //用户鉴权异常
     //配置类5035X
+    USER_TOKEN_HEADER_NOT_CONFIG(50350,"Please configure: sunnly.security.auth.user.token-header"),
+
+
     //Token不合法 5036X
+
 
     TOHER_ERROR(50002,"其他异常");
 

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import wang.sunnly.micro.common.core.handler.BaseThreadLocalHandler;
 import wang.sunnly.micro.security.client.annotation.IgnoreClientToken;
 import wang.sunnly.micro.security.client.configuration.SecurityAuthClientConfig;
 import wang.sunnly.micro.security.client.properties.SecurityProperties;
@@ -29,7 +30,7 @@ public class ClientAuthInterceptor extends HandlerInterceptorAdapter {
     private SecurityProperties securityProperties;
 
     @Autowired
-    private SecurityAuthClientConfig securityAuthServiceController;
+    private SecurityAuthClientConfig securityAuthClientConfig;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -47,36 +48,27 @@ public class ClientAuthInterceptor extends HandlerInterceptorAdapter {
         //获取header中的token,key值从配置文件sunnly.security.auth.client.token-header中获取
         String tokenKey = securityProperties.getAuth().getClient().getTokenHeader();
         if (StringUtils.isEmpty(tokenKey)){
-            throw new SecurityTokenException(SecurityStatus.TOKEN_HEADER_NOT_CONFIG);
+            throw new SecurityTokenException(SecurityStatus.CLIENT_TOKEN_HEADER_NOT_CONFIG);
         }
         //获取请求头中的token,当服务鉴权时，Feign请求时将携带自己的token过来请求
-        String headerToken = request.getHeader(tokenKey);
+        String token = request.getHeader(tokenKey);
 
 //        TODO测试数据
-        headerToken =
-                "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhY2UtZ2F0ZSIsInVzZXJJZCI6IjEiLCJuYW1lIjoiYWNlLWdhdGUiLCJleHAiOjE1NjA3NTc5NzN9.ctWKO4BYsa6J3nnQsdvjxklQ2_2xiM1Be0_DTSre6vG0xiHtwabPz77e4pcymRGKmywo7fCWsn6oNxBS0irfVi6jXVzpAIApU2awcchMLp2I16c03FD2MGboZ-pSJIlD4dY-OJwMbEdw_yERSRDZEdp_4zv6Ppd2p5D75sf0RKU";
+//        token =
+//                "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhY2UtZ2F0ZSIsInVzZXJJZCI6IjEiLCJuYW1lIjoiYWNlLWdhdGUiLCJleHAiOjE1NjA3NTc5NzN9.ctWKO4BYsa6J3nnQsdvjxklQ2_2xiM1Be0_DTSre6vG0xiHtwabPz77e4pcymRGKmywo7fCWsn6oNxBS0irfVi6jXVzpAIApU2awcchMLp2I16c03FD2MGboZ-pSJIlD4dY-OJwMbEdw_yERSRDZEdp_4zv6Ppd2p5D75sf0RKU";
 
-//        if(StringUtils.isEmpty(headerToken)){
-//            //从cookies中取
-//            if (request.getCookies() !=null){
-//                for (Cookie cookie : request.getCookies()){
-//                    if (StringUtils.equals(cookie.getName(),tokenKey)){
-//                        headerToken = cookie.getValue();
-//                    }
-//                }
-//            }
-//        }
-        if(StringUtils.isEmpty(headerToken)){
+        if(StringUtils.isEmpty(token)){
             throw new SecurityTokenException(SecurityStatus.TOKEN_EMPTY);
         }
         //解析请求头中的token，服务端token需要通过公钥解析，从鉴权服务器获取公钥
-        IJWTInfo infoFromToken = securityAuthServiceController.getInfoFromToken(headerToken);
+        IJWTInfo infoFromToken = securityAuthClientConfig.getInfoFromToken(token);
         String uniqueName = infoFromToken.getUniqueName();
-        for (String client : securityAuthServiceController.getAllowedClient()){
+        for (String client : securityAuthClientConfig.getAllowedClient()){
             if (StringUtils.equals(client, uniqueName)){
                 return super.preHandle(request, response, handler);
             }
         }
         throw new SecurityTokenException(SecurityStatus.CLIENT_FORBIDDEN);
     }
+
 }

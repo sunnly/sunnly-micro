@@ -1,5 +1,5 @@
 server:
-  port: ${random.int[20100,20101]}
+  port: ${random.int[10100,10101]}
 
 
 spring:
@@ -30,25 +30,13 @@ feign:
     enabled: true
 
 sunnly:
-  path-patterns:
-    client:
-      intercept:
-        - /demo/**
-        - /test/**
-      exclude:
-        - /demo/abc
-    user:
-      intercept:
-        - /demo/**
-        - /test/**
-      exclude:
-        - /demo/abc
-
+  feign:
+    intercept-path: demo/**
   security:
     auth:
       service-id: sunnly-micro-security-oauth
       client:
-        id: ace-admin
+        id: ace-gate
         secret: 123456
         token-header: x-client-token
       user:

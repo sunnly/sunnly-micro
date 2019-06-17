@@ -6,6 +6,7 @@ import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import wang.sunnly.micro.common.core.constants.BaseThreadLocalConstants;
 import wang.sunnly.micro.common.core.handler.BaseThreadLocalHandler;
 import wang.sunnly.micro.security.client.configuration.SecurityAuthClientConfig;
@@ -23,6 +24,7 @@ import java.io.IOException;
  * @Date 2019/6/17 16:51
  * @Version 1.0
  */
+@Component
 public class FeignOkHttpInterceptor implements Interceptor {
 
     @Autowired

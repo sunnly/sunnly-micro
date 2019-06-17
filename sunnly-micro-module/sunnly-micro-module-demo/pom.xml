@@ -16,5 +16,6 @@
     </dependencies>
     <modules>
         <module>sunnly-micro-module-demo-producer</module>
+        <module>sunnly-micro-module-demo-consumer</module>
     </modules>
 </project>
