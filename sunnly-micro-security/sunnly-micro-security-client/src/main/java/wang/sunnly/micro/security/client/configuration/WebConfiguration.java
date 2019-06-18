@@ -31,6 +31,7 @@ public class WebConfiguration extends WebMvcConfigurationSupport {
         registry.addInterceptor(userAuthRestInterceptor())
             .addPathPatterns(pathFilterProperties.getUser().getIntercept())
             .excludePathPatterns(pathFilterProperties.getUser().getExclude());
+
     }
 
     @Bean

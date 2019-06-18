@@ -1,6 +1,7 @@
 package wang.sunnly.micro.tools.mysql.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import wang.sunnly.micro.common.web.entity.MyExample;
 import wang.sunnly.micro.common.web.msg.ListRestResponse;
 import wang.sunnly.micro.common.web.msg.ObjectRestResponse;
@@ -19,7 +20,7 @@ import java.util.List;
 public class BaseServiceImpl<M extends MyMapper<E>,E>
         implements BaseService<M, E> {
 
-    @Resource
+    @Autowired
     protected M mapper;
 
     @Override

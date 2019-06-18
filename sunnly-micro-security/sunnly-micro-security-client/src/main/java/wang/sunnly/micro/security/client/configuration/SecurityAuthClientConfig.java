@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import wang.sunnly.micro.common.web.msg.ObjectRestResponse;
-import wang.sunnly.micro.security.client.properties.SecurityProperties;
+import wang.sunnly.micro.security.core.properties.SecurityProperties;
 import wang.sunnly.micro.security.client.service.SecurityAuthClientFeign;
 import wang.sunnly.micro.security.core.status.SecurityStatus;
 import wang.sunnly.micro.security.core.exception.SecurityTokenException;
@@ -66,7 +65,7 @@ public class SecurityAuthClientConfig {
     /**
      * 每30s刷新一次允许访问的微服务列表
      */
-    @Scheduled(cron = "0/30 * * * * ?")
+//    @Scheduled(cron = "0/30000 * * * * ?")
     public void refreshAllowedClient(){
         //从鉴权服务器获取允许访问的微服务
         ObjectRestResponse<List<String>> allowClient = securityAuthClientFeign.getAllowClient(securityProperties.getAuth().getClient().getId(),
@@ -86,7 +85,7 @@ public class SecurityAuthClientConfig {
     }
 
     //定时刷新微服务token
-    @Scheduled(cron = "0 0/10 * * * ?")
+//    @Scheduled(cron = "0 0/100000 * * * ?")
     public void refreshClientToken(){
         ObjectRestResponse<String> accessToken = securityAuthClientFeign.getAccessToken(securityProperties.getAuth().getClient().getId(),
                 securityProperties.getAuth().getClient().getSecret());

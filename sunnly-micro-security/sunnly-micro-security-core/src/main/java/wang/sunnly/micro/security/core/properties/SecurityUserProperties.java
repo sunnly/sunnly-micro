@@ -1,4 +1,4 @@
-package wang.sunnly.micro.security.client.properties;
+package wang.sunnly.micro.security.core.properties;
 
 import org.springframework.beans.factory.annotation.Configurable;
 

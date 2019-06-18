@@ -3,6 +3,7 @@ package wang.sunnly.micro.tools.mysql.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import wang.sunnly.micro.common.web.msg.BaseResponse;
 import wang.sunnly.micro.common.web.msg.ListRestResponse;
@@ -21,7 +22,7 @@ import java.util.List;
 @Api(value = "基类控制器", tags = {"基类控制器接口"})
 public class BaseController<S extends BaseService,E> {
 
-    @Resource
+    @Autowired
     public S service;
 
     /**

@@ -2,13 +2,12 @@ package wang.sunnly.micro.security.client.interceptor;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import wang.sunnly.micro.common.core.handler.BaseThreadLocalHandler;
 import wang.sunnly.micro.security.client.annotation.IgnoreUserToken;
 import wang.sunnly.micro.security.client.configuration.SecurityAuthClientConfig;
-import wang.sunnly.micro.security.client.properties.SecurityProperties;
+import wang.sunnly.micro.security.core.properties.SecurityProperties;
 import wang.sunnly.micro.security.core.exception.SecurityTokenException;
 import wang.sunnly.micro.security.core.status.SecurityStatus;
 import wang.sunnly.micro.security.core.utils.jwt.IJWTInfo;
@@ -47,8 +46,9 @@ public class UserAuthRestInterceptor extends HandlerInterceptorAdapter {
         if (StringUtils.isEmpty(tokenKey)){
             throw new SecurityTokenException(SecurityStatus.USER_TOKEN_HEADER_NOT_CONFIG);
         }
+        //一般在APP端或Feign接口调用是会封装到Header中
         String token = request.getHeader(tokenKey);
-
+        //  用户直接访问一般信息放在cookie中
         if(StringUtils.isEmpty(token)){
             //从cookies中取
             if (request.getCookies() !=null){

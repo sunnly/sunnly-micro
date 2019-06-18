@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import wang.sunnly.micro.common.web.msg.ObjectRestResponse;
-import wang.sunnly.micro.security.client.properties.SecurityProperties;
+import wang.sunnly.micro.security.core.properties.SecurityProperties;
 import wang.sunnly.micro.security.client.service.SecurityAuthClientFeign;
 
 /**
@@ -46,7 +46,7 @@ public class RefreshPubKeyRunner implements CommandLineRunner {
     /**
      * 定时刷新验证clientId和secret是否发生改变
      */
-    @Scheduled(cron = "0 0/5 * * * ?")
+    @Scheduled(cron = "0 0/50000 * * * ?")
     public void validateClientIdAndSecret(){
         //鉴权服务端提供获取servicePubKey接口
         try {
@@ -72,7 +72,7 @@ public class RefreshPubKeyRunner implements CommandLineRunner {
      * @Param
      * @return
      **/
-    @Scheduled(cron = "0 0/1 * * * ?")
+    @Scheduled(cron = "0 0/10000 * * * ?")
     public void validateClientIdAndSecret1(){
         if (RefreshPubKeyRunner.isNull(securityProperties.getAuth().getUser().getPubKeyByte())
                 || RefreshPubKeyRunner.isNull(securityProperties.getAuth().getClient().getPubKeyByte())){

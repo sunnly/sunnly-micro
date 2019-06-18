@@ -10,8 +10,7 @@ import org.springframework.stereotype.Component;
 import wang.sunnly.micro.common.core.constants.BaseThreadLocalConstants;
 import wang.sunnly.micro.common.core.handler.BaseThreadLocalHandler;
 import wang.sunnly.micro.security.client.configuration.SecurityAuthClientConfig;
-import wang.sunnly.micro.security.client.properties.SecurityProperties;
-import wang.sunnly.micro.security.core.constants.CommonConstants;
+import wang.sunnly.micro.security.core.properties.SecurityProperties;
 
 import java.io.IOException;
 

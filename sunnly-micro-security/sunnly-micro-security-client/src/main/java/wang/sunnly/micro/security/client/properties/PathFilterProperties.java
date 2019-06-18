@@ -1,5 +1,6 @@
 package wang.sunnly.micro.security.client.properties;
 
+import com.google.common.collect.Lists;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -18,8 +19,8 @@ public class PathFilterProperties {
     private PathPatterns user = new PathPatterns();
 
     public class PathPatterns{
-        private List<String> intercept;
-        private List<String> exclude;
+        private List<String> intercept = Lists.newArrayList();
+        private List<String> exclude = Lists.newArrayList();
 
         public List<String> getIntercept() {
             return intercept;

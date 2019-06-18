@@ -30,8 +30,21 @@ feign:
     enabled: true
 
 sunnly:
-  feign:
-    intercept-path: demo/**
+  path-patterns:
+    client:
+#      Feign 拦截拼装服务器端地址
+      intercept:
+        - /intercept/client/**
+      exclude:
+        - /intercept/client/pass
+    user:
+#      Feign 拦截拼装服务器端地址
+      intercept:
+        - /intercept/user/**
+        - /test/**
+      exclude:
+        - /intercept/user/pass
+
   security:
     auth:
       service-id: sunnly-micro-security-oauth

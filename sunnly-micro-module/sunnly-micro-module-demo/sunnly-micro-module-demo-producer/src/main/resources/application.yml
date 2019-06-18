@@ -33,16 +33,15 @@ sunnly:
   path-patterns:
     client:
       intercept:
-        - /demo/**
-        - /test/**
+        - /intercept/client/**
       exclude:
-        - /demo/abc
+        - /intercept/client/pass
     user:
       intercept:
-        - /demo/**
+        - /intercept/user/**
         - /test/**
       exclude:
-        - /demo/abc
+        - /intercept/user/pass
 
   security:
     auth:
