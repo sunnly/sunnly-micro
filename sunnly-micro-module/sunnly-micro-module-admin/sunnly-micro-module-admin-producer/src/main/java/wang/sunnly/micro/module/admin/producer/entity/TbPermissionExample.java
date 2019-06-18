@@ -507,6 +507,216 @@ public class TbPermissionExample extends MyExample {
             return (Criteria) this;
         }
 
+        public Criteria andMethodIsNull() {
+            addCriterion("`method` is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodIsNotNull() {
+            addCriterion("`method` is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodEqualTo(String value) {
+            addCriterion("`method` =", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNotEqualTo(String value) {
+            addCriterion("`method` <>", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodGreaterThan(String value) {
+            addCriterion("`method` >", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodGreaterThanOrEqualTo(String value) {
+            addCriterion("`method` >=", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodLessThan(String value) {
+            addCriterion("`method` <", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodLessThanOrEqualTo(String value) {
+            addCriterion("`method` <=", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodLike(String value) {
+            addCriterion("`method` like", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNotLike(String value) {
+            addCriterion("`method` not like", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodIn(List<String> values) {
+            addCriterion("`method` in", values, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNotIn(List<String> values) {
+            addCriterion("`method` not in", values, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodBetween(String value1, String value2) {
+            addCriterion("`method` between", value1, value2, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNotBetween(String value1, String value2) {
+            addCriterion("`method` not between", value1, value2, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andDisplayIsNull() {
+            addCriterion("display is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDisplayIsNotNull() {
+            addCriterion("display is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDisplayEqualTo(String value) {
+            addCriterion("display =", value, "display");
+            return (Criteria) this;
+        }
+
+        public Criteria andDisplayNotEqualTo(String value) {
+            addCriterion("display <>", value, "display");
+            return (Criteria) this;
+        }
+
+        public Criteria andDisplayGreaterThan(String value) {
+            addCriterion("display >", value, "display");
+            return (Criteria) this;
+        }
+
+        public Criteria andDisplayGreaterThanOrEqualTo(String value) {
+            addCriterion("display >=", value, "display");
+            return (Criteria) this;
+        }
+
+        public Criteria andDisplayLessThan(String value) {
+            addCriterion("display <", value, "display");
+            return (Criteria) this;
+        }
+
+        public Criteria andDisplayLessThanOrEqualTo(String value) {
+            addCriterion("display <=", value, "display");
+            return (Criteria) this;
+        }
+
+        public Criteria andDisplayLike(String value) {
+            addCriterion("display like", value, "display");
+            return (Criteria) this;
+        }
+
+        public Criteria andDisplayNotLike(String value) {
+            addCriterion("display not like", value, "display");
+            return (Criteria) this;
+        }
+
+        public Criteria andDisplayIn(List<String> values) {
+            addCriterion("display in", values, "display");
+            return (Criteria) this;
+        }
+
+        public Criteria andDisplayNotIn(List<String> values) {
+            addCriterion("display not in", values, "display");
+            return (Criteria) this;
+        }
+
+        public Criteria andDisplayBetween(String value1, String value2) {
+            addCriterion("display between", value1, value2, "display");
+            return (Criteria) this;
+        }
+
+        public Criteria andDisplayNotBetween(String value1, String value2) {
+            addCriterion("display not between", value1, value2, "display");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportsIsNull() {
+            addCriterion("imports is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportsIsNotNull() {
+            addCriterion("imports is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportsEqualTo(String value) {
+            addCriterion("imports =", value, "imports");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportsNotEqualTo(String value) {
+            addCriterion("imports <>", value, "imports");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportsGreaterThan(String value) {
+            addCriterion("imports >", value, "imports");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportsGreaterThanOrEqualTo(String value) {
+            addCriterion("imports >=", value, "imports");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportsLessThan(String value) {
+            addCriterion("imports <", value, "imports");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportsLessThanOrEqualTo(String value) {
+            addCriterion("imports <=", value, "imports");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportsLike(String value) {
+            addCriterion("imports like", value, "imports");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportsNotLike(String value) {
+            addCriterion("imports not like", value, "imports");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportsIn(List<String> values) {
+            addCriterion("imports in", values, "imports");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportsNotIn(List<String> values) {
+            addCriterion("imports not in", values, "imports");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportsBetween(String value1, String value2) {
+            addCriterion("imports between", value1, value2, "imports");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportsNotBetween(String value1, String value2) {
+            addCriterion("imports not between", value1, value2, "imports");
+            return (Criteria) this;
+        }
+
         public Criteria andCreatedIsNull() {
             addCriterion("created is null");
             return (Criteria) this;

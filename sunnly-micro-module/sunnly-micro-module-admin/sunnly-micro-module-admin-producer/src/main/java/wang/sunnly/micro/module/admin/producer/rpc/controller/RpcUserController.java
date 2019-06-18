@@ -1,5 +1,6 @@
 package wang.sunnly.micro.module.admin.producer.rpc.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import wang.sunnly.micro.common.core.entity.PermissionInfo;
 import wang.sunnly.micro.common.core.entity.UserInfo;
@@ -20,6 +21,7 @@ import java.util.Map;
 @RequestMapping("api")
 public class RpcUserController {
 
+    @Autowired
     RpcUserService rpcUserService;
 
     @GetMapping("/permissions")
@@ -30,10 +32,11 @@ public class RpcUserController {
     @GetMapping("/permissions/{username}")
     public @ResponseBody List<PermissionInfo> getPermissionByUsername(
             @PathVariable("username") String username){
-
+        rpcUserService.validate("sunnly","sunnly");
         return rpcUserService.getPermisssionByUsername(username);
     }
 
+    @GetMapping("/user/validate")
     public @ResponseBody UserInfo validate(@RequestBody Map<String,String> body){
         return rpcUserService.validate(body.get("username"), body.get("password"));
     }

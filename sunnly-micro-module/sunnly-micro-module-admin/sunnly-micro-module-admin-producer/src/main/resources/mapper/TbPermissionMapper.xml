@@ -2,15 +2,172 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="wang.sunnly.micro.module.admin.producer.mapper.TbPermissionMapper">
   <resultMap id="BaseResultMap" type="wang.sunnly.micro.module.admin.producer.entity.TbPermission">
-    <!--@mbg.generated generated on Tue Jun 18 15:49:41 CST 2019.-->
+    <!--@mbg.generated generated on Tue Jun 18 23:33:38 CST 2019.-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="parent_id" jdbcType="BIGINT" property="parentId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="enname" jdbcType="VARCHAR" property="enname" />
     <result column="url" jdbcType="VARCHAR" property="url" />
     <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="method" jdbcType="VARCHAR" property="method" />
+    <result column="display" jdbcType="VARCHAR" property="display" />
+    <result column="imports" jdbcType="VARCHAR" property="imports" />
     <result column="created" jdbcType="TIMESTAMP" property="created" />
     <result column="updated" jdbcType="TIMESTAMP" property="updated" />
   </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated generated on Tue Jun 18 23:33:38 CST 2019.-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated generated on Tue Jun 18 23:33:38 CST 2019.-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Tue Jun 18 23:33:38 CST 2019.-->
+    id, parent_id, `name`, enname, url, description, `method`, display, imports, created, 
+    updated
+  </sql>
+  <select id="selectByExample" parameterType="wang.sunnly.micro.module.admin.producer.entity.TbPermissionExample" resultMap="BaseResultMap">
+    <!--@mbg.generated generated on Tue Jun 18 23:33:38 CST 2019.-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_permission
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="wang.sunnly.micro.module.admin.producer.entity.TbPermissionExample">
+    <!--@mbg.generated generated on Tue Jun 18 23:33:38 CST 2019.-->
+    delete from tb_permission
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="wang.sunnly.micro.module.admin.producer.entity.TbPermissionExample" resultType="java.lang.Long">
+    <!--@mbg.generated generated on Tue Jun 18 23:33:38 CST 2019.-->
+    select count(*) from tb_permission
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated generated on Tue Jun 18 23:33:38 CST 2019.-->
+    update tb_permission
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.parentId != null">
+        parent_id = #{record.parentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null">
+        `name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enname != null">
+        enname = #{record.enname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null">
+        url = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.method != null">
+        `method` = #{record.method,jdbcType=VARCHAR},
+      </if>
+      <if test="record.display != null">
+        display = #{record.display,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imports != null">
+        imports = #{record.imports,jdbcType=VARCHAR},
+      </if>
+      <if test="record.created != null">
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updated != null">
+        updated = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated generated on Tue Jun 18 23:33:38 CST 2019.-->
+    update tb_permission
+    set id = #{record.id,jdbcType=BIGINT},
+      parent_id = #{record.parentId,jdbcType=BIGINT},
+      `name` = #{record.name,jdbcType=VARCHAR},
+      enname = #{record.enname,jdbcType=VARCHAR},
+      url = #{record.url,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      `method` = #{record.method,jdbcType=VARCHAR},
+      display = #{record.display,jdbcType=VARCHAR},
+      imports = #{record.imports,jdbcType=VARCHAR},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
 
 </mapper>

@@ -23,7 +23,7 @@ public class TbPermission {
     private String name;
 
     /**
-     * 权限英文名称
+     * 机器识别的权限名称
      */
     @Column(name = "enname")
     private String enname;
@@ -39,6 +39,24 @@ public class TbPermission {
      */
     @Column(name = "description")
     private String description;
+
+    /**
+     * 请求方式 get post update delete
+     */
+    @Column(name = "`method`")
+    private String method;
+
+    /**
+     * 展示方式：menu button href
+     */
+    @Column(name = "display")
+    private String display;
+
+    /**
+     * Vue引入界面
+     */
+    @Column(name = "imports")
+    private String imports;
 
     @Column(name = "created")
     private Date created;
@@ -97,18 +115,18 @@ public class TbPermission {
     }
 
     /**
-     * 获取权限英文名称
+     * 获取机器识别的权限名称
      *
-     * @return enname - 权限英文名称
+     * @return enname - 机器识别的权限名称
      */
     public String getEnname() {
         return enname;
     }
 
     /**
-     * 设置权限英文名称
+     * 设置机器识别的权限名称
      *
-     * @param enname 权限英文名称
+     * @param enname 机器识别的权限名称
      */
     public void setEnname(String enname) {
         this.enname = enname;
@@ -148,6 +166,60 @@ public class TbPermission {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    /**
+     * 获取请求方式 get post update delete
+     *
+     * @return method - 请求方式 get post update delete
+     */
+    public String getMethod() {
+        return method;
+    }
+
+    /**
+     * 设置请求方式 get post update delete
+     *
+     * @param method 请求方式 get post update delete
+     */
+    public void setMethod(String method) {
+        this.method = method;
+    }
+
+    /**
+     * 获取展示方式：menu button href
+     *
+     * @return display - 展示方式：menu button href
+     */
+    public String getDisplay() {
+        return display;
+    }
+
+    /**
+     * 设置展示方式：menu button href
+     *
+     * @param display 展示方式：menu button href
+     */
+    public void setDisplay(String display) {
+        this.display = display;
+    }
+
+    /**
+     * 获取Vue引入界面
+     *
+     * @return imports - Vue引入界面
+     */
+    public String getImports() {
+        return imports;
+    }
+
+    /**
+     * 设置Vue引入界面
+     *
+     * @param imports Vue引入界面
+     */
+    public void setImports(String imports) {
+        this.imports = imports;
     }
 
     /**
