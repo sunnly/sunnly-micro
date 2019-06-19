@@ -41,9 +41,11 @@ sunnly:
 #      Feign 拦截拼装服务器端地址
       intercept:
         - /intercept/user/**
-        - /test/**
+        - /intercept/client/**
+        - /**
       exclude:
         - /intercept/user/pass
+#        - /login
 
   security:
     auth:

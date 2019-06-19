@@ -35,7 +35,7 @@ public class ApiUserController {
         return rpcUserService.getPermisssionByUsername(username);
     }
 
-    @GetMapping("/user/validate")
+    @PostMapping("/user/validate")
     public @ResponseBody UserInfo validate(@RequestBody Map<String,String> body){
         return rpcUserService.validate(body.get("username"), body.get("password"));
     }

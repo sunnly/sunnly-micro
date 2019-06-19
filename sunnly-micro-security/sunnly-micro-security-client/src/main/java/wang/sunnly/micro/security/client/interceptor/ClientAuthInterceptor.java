@@ -31,6 +31,7 @@ public class ClientAuthInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         //获取IgnoreServiceToken注解
         IgnoreClientToken annotation = handlerMethod.getBeanType().getAnnotation(IgnoreClientToken.class);
@@ -49,10 +50,6 @@ public class ClientAuthInterceptor extends HandlerInterceptorAdapter {
         }
         //获取请求头中的token,当服务鉴权时，Feign请求时将携带自己的token过来请求
         String token = request.getHeader(tokenKey);
-
-//        TODO测试数据
-//        token =
-//                "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhY2UtZ2F0ZSIsInVzZXJJZCI6IjEiLCJuYW1lIjoiYWNlLWdhdGUiLCJleHAiOjE1NjA3NTc5NzN9.ctWKO4BYsa6J3nnQsdvjxklQ2_2xiM1Be0_DTSre6vG0xiHtwabPz77e4pcymRGKmywo7fCWsn6oNxBS0irfVi6jXVzpAIApU2awcchMLp2I16c03FD2MGboZ-pSJIlD4dY-OJwMbEdw_yERSRDZEdp_4zv6Ppd2p5D75sf0RKU";
 
         if(StringUtils.isEmpty(token)){
             throw new SecurityTokenException(SecurityStatus.TOKEN_EMPTY);

@@ -14,6 +14,14 @@ public class JWTAuthenticationUser implements Serializable {
     private String username;
     private String password;
 
+    public JWTAuthenticationUser(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public JWTAuthenticationUser() {
+    }
+
     public String getUsername() {
         return username;
     }

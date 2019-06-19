@@ -23,7 +23,7 @@ import wang.sunnly.micro.module.demo.producer.entity.TbUser;
 @MapperScan("wang.sunnly.micro.module.demo.producer.mapper")
 @EnableFeignClients(basePackages = {"wang.sunnly.micro"})
 @ComponentScans({
-        @ComponentScan("wang.sunnly.micro.security.client"),
+        @ComponentScan("wang.sunnly.micro.security"),
         @ComponentScan("wang.sunnly.micro.common.web")
 })
 //@ComponentScan(includeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = "wang.sunnly.**.component"))

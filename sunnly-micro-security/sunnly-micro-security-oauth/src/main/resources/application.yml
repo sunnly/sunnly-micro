@@ -31,5 +31,16 @@ spring:
 sunnly:
   security:
     auth:
+#      service-id: sunnly-micro-security-oauth
       client:
+        id: ace-auth
+        secret: 123456
+        token-header: x-client-token
+        rsa-secret: aaa
         expire: 3600
+      user:
+        token-header: Authorization
+        rsa-secret: bbb
+        expire: 3600
+
+

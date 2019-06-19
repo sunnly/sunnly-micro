@@ -8,7 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScans;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tk.mybatis.spring.annotation.MapperScan;
-
 /**
  * @author Sunnly
  * @ClassName DemoConsumerApplication
@@ -21,7 +20,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @MapperScan("wang.sunnly.micro.module.demo.consumer.mapper")
 @EnableFeignClients(basePackages = {"wang.sunnly.micro"})
 @ComponentScans({
-        @ComponentScan("wang.sunnly.micro.security.client"),
+        @ComponentScan("wang.sunnly.micro.security"),
         @ComponentScan("wang.sunnly.micro.common.web")
 })
 public class DemoConsumerApplication {

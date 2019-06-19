@@ -4,7 +4,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import wang.sunnly.micro.common.core.exception.UserInvalidException;
 import wang.sunnly.micro.common.core.handler.BaseThreadLocalHandler;
+import wang.sunnly.micro.common.core.status.UserInvalidStatus;
 import wang.sunnly.micro.security.client.annotation.IgnoreUserToken;
 import wang.sunnly.micro.security.client.configuration.SecurityAuthClientConfig;
 import wang.sunnly.micro.security.core.properties.SecurityProperties;
@@ -58,6 +60,9 @@ public class UserAuthRestInterceptor extends HandlerInterceptorAdapter {
                     }
                 }
             }
+        }
+        if (StringUtils.isEmpty(token)){
+            throw new UserInvalidException(UserInvalidStatus.USER_TOKEN_ERR);
         }
         IJWTInfo infoFromToken = securityAuthClientConfig.getInfoFromToken(token);
         //保存到本地线程存储中    ,Feign拦截器中就可以获取这些信息了

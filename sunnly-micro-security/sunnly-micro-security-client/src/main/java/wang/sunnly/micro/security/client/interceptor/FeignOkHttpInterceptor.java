@@ -50,7 +50,9 @@ public class FeignOkHttpInterceptor implements Interceptor {
                                 securityAuthClientConfig.getClientToken())
                         .build();
         Response response = chain.proceed(request);
+
         if(HttpStatus.FORBIDDEN.value() == response.code()){
+            //可能是token过去，刷新token重新请求
             if (response.body().string().contains(String.valueOf(BaseThreadLocalConstants.EX_CLIENT_INVALID_CODE))) {
                 securityAuthClientConfig.refreshClientToken();
                 request = chain.request()
