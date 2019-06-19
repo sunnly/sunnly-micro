@@ -44,8 +44,8 @@ public class SecurityAuthClientConfig {
 
     /**
      * 通过token换取服务信息
-     * @param token
-     * @return
+     * @param token token
+     * @return IJWTInfo
      */
     public IJWTInfo getInfoFromToken(String token){
         try {
@@ -65,7 +65,7 @@ public class SecurityAuthClientConfig {
     /**
      * 每30s刷新一次允许访问的微服务列表
      */
-//    @Scheduled(cron = "0/30000 * * * * ?")
+// TODO   @Scheduled(cron = "0/30 * * * * ?")
     public void refreshAllowedClient(){
         //从鉴权服务器获取允许访问的微服务
         ObjectRestResponse<List<String>> allowClient = securityAuthClientFeign.getAllowClient(securityProperties.getAuth().getClient().getId(),
@@ -85,7 +85,7 @@ public class SecurityAuthClientConfig {
     }
 
     //定时刷新微服务token
-//    @Scheduled(cron = "0 0/100000 * * * ?")
+//  TODO   @Scheduled(cron = "0 0/10 * * * ?")
     public void refreshClientToken(){
         ObjectRestResponse<String> accessToken = securityAuthClientFeign.getAccessToken(securityProperties.getAuth().getClient().getId(),
                 securityProperties.getAuth().getClient().getSecret());

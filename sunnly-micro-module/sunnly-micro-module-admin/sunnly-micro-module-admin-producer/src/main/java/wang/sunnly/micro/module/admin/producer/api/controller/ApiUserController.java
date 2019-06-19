@@ -1,10 +1,10 @@
-package wang.sunnly.micro.module.admin.producer.rpc.controller;
+package wang.sunnly.micro.module.admin.producer.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import wang.sunnly.micro.common.core.entity.PermissionInfo;
 import wang.sunnly.micro.common.core.entity.UserInfo;
-import wang.sunnly.micro.module.admin.producer.rpc.service.RpcUserService;
+import wang.sunnly.micro.module.admin.producer.api.service.ApiUserService;
 
 import java.util.List;
 import java.util.Map;
@@ -13,16 +13,15 @@ import java.util.Map;
  * 用户验证、权限、token获取
  *
  * @author Sunnly
- * @ClassName UserValidateController
- * @Date 2019/6/18 15:07
- * @Version 1.0
+ * @create 2019/6/18 15:07
  */
+
 @RestController
 @RequestMapping("api")
-public class RpcUserController {
+public class ApiUserController {
 
     @Autowired
-    RpcUserService rpcUserService;
+    ApiUserService rpcUserService;
 
     @GetMapping("/permissions")
     public @ResponseBody List<PermissionInfo> getAllPermission(){

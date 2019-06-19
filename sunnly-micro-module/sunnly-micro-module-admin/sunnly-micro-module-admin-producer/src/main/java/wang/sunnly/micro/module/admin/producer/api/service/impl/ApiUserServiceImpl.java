@@ -1,8 +1,6 @@
-package wang.sunnly.micro.module.admin.producer.rpc.service.impl;
+package wang.sunnly.micro.module.admin.producer.api.service.impl;
 
-import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,8 +9,7 @@ import wang.sunnly.micro.common.core.entity.PermissionInfo;
 import wang.sunnly.micro.common.core.entity.UserInfo;
 import wang.sunnly.micro.module.admin.producer.entity.TbPermission;
 import wang.sunnly.micro.module.admin.producer.entity.TbUser;
-import wang.sunnly.micro.module.admin.producer.mapper.TbPermissionMapper;
-import wang.sunnly.micro.module.admin.producer.rpc.service.RpcUserService;
+import wang.sunnly.micro.module.admin.producer.api.service.ApiUserService;
 import wang.sunnly.micro.module.admin.producer.service.TbPermissionService;
 import wang.sunnly.micro.module.admin.producer.service.TbUserService;
 
@@ -25,7 +22,7 @@ import java.util.List;
  * @Version 1.0
  */
 @Service
-public class RpcUserServiceImpl implements RpcUserService {
+public class ApiUserServiceImpl implements ApiUserService {
 
     @Autowired
     private TbUserService tbUserService;

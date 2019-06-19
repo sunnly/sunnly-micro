@@ -1,4 +1,4 @@
-package wang.sunnly.micro.module.admin.producer.rpc.service;
+package wang.sunnly.micro.module.admin.producer.api.service;
 
 import wang.sunnly.micro.common.core.entity.PermissionInfo;
 import wang.sunnly.micro.common.core.entity.UserInfo;
@@ -7,11 +7,12 @@ import java.util.List;
 
 /**
  * @author Sunnly
- * @ClassName UserService
+ * @Inteface UserService
  * @Date 2019/6/18 15:24
  * @Version 1.0
  */
-public interface RpcUserService {
+
+public interface ApiUserService {
 
     UserInfo validate(String username, String password);
 
