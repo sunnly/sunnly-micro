@@ -1,5 +1,7 @@
 package wang.sunnly.micro.security.client.interceptor;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -12,6 +14,7 @@ import wang.sunnly.micro.common.core.handler.BaseThreadLocalHandler;
 import wang.sunnly.micro.security.client.configuration.SecurityAuthClientConfig;
 import wang.sunnly.micro.security.core.properties.SecurityProperties;
 
+import javax.swing.text.html.parser.Parser;
 import java.io.IOException;
 
 /**
@@ -66,6 +69,7 @@ public class FeignOkHttpInterceptor implements Interceptor {
                 response = chain.proceed(request);
             }
         }
+
         return response;
     }
 }

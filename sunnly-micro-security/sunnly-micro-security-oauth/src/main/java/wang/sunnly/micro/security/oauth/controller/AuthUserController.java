@@ -58,13 +58,10 @@ public class AuthUserController {
      * @create 2019年6月19日 11:05:52
      **/
     @GetMapping("/verify")
-    public boolean verify(@RequestParam("token") String token){
-        try {
-            authUserService.validate(token);
-            return true;
-        } catch (Exception e) {
-            throw new UserInvalidException(UserInvalidStatus.USER_TOKEN_INVALID_ERR);
-        }
+    public boolean verify(@RequestParam("token") String token) throws Exception{
+
+        authUserService.validate(token);
+        return true;
 
     }
     

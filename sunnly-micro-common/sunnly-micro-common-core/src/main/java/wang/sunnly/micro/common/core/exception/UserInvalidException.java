@@ -12,4 +12,7 @@ public class UserInvalidException extends BaseException {
     public UserInvalidException(UserInvalidStatus status) {
         super(status.reasonPhrase(), status.value());
     }
+    public UserInvalidException(String reason, int state){
+        super(reason,state);
+    }
 }

@@ -9,8 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import wang.sunnly.micro.common.web.msg.ObjectRestResponse;
-import wang.sunnly.micro.security.core.properties.SecurityProperties;
 import wang.sunnly.micro.security.client.service.SecurityAuthClientFeign;
+import wang.sunnly.micro.security.core.properties.SecurityProperties;
 
 /**
  * @author Sunnly
@@ -31,15 +31,16 @@ public class RefreshPubKeyRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        try {
+            log.info("初始化用户PubKey");
+            getUserPublicKey();
+            log.info("初始化服务pubKey");
+            getServicePublicKey();
+        }catch (Exception e){
+            log.info("PubKey初始化失败");
+            e.printStackTrace();
+        }
 
-//        System.out.println("===========================================================");
-//        System.out.println(securityAuthClientFeign.getAccessToken("ace-gate","123456").getData());
-//        System.out.println("===========================================================");
-
-        log.info("初始化用户PubKey");
-        getUserPublicKey();
-        log.info("初始化服务pubKey");
-        getServicePublicKey();
 
     }
 

@@ -14,7 +14,9 @@ import java.util.List;
  * @ClassName SecurityAuthServiceService
  * @Date 2019/6/16 0016 23:31
  **/
-@FeignClient(value = "${sunnly.security.auth.service-id}", fallback = SecurityAuthClientFeignFallback.class)
+@FeignClient(value = "${sunnly.security.auth.service-id}"
+//        fallback = SecurityAuthClientFeignFallback.class
+)
 public interface SecurityAuthClientFeign {
     @PostMapping("/client/token")
     ObjectRestResponse<String> getAccessToken(@RequestParam("clientId") String clientId,
