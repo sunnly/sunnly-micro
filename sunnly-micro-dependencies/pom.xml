@@ -37,7 +37,7 @@
         <springfox-swagger2.version>2.6.1</springfox-swagger2.version>
         <io-swagger-annotations.version>1.5.13</io-swagger-annotations.version>
         <!--数据库-->
-        <mysql.version>8.0.15</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
         <hikaricp.version>3.2.0</hikaricp.version>
         <mybatis.version>3.4.1</mybatis.version>
 
